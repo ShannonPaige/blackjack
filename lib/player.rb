@@ -4,7 +4,6 @@ class Player
   def initialize(name, hand = [])
     @name = name
     @hand = []
-    @hit = nil
   end
 
   def cards
@@ -12,13 +11,13 @@ class Player
   end
 
   def score
-    Cards.score(@hand.join(", "))
+    Cards.score(@hand)
   end
 
   def hit
-    @hit = Cards.pick_a_card
-    @hand << @hit
-    p @hit
+    hit = Cards.pick_a_card(@hand)
+    @hand << hit
+    hit
   end
 
 end

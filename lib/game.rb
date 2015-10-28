@@ -10,7 +10,7 @@ class Game
 
   def deal
     2.times do
-      @player.hand << Cards.pick_a_card
+      @player.hand << Cards.pick_a_card(@player.hand)
     end
   end
 end

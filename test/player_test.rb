@@ -7,7 +7,7 @@ require 'pry'
 class PlayerTest < Minitest::Test
   def setup
     @player = Player.new("John")
-    @game = Game.new(@player)
+    @player.hand = ["2 of Hearts", "K of Spades"]
   end
 
   def test_can_create_a_new_player_given_a_name
@@ -15,19 +15,17 @@ class PlayerTest < Minitest::Test
   end
 
   def test_player_has_cards
-    @game.deal
-    @player.cards
-    assert_equal String, @player.cards.class
+    expected = "2 of Hearts, K of Spades"
+    assert_equal expected, @player.cards
   end
 
   def test_players_score_can_be_calculated
-    @player.hand = ["2 of Hearts", "K of Spades"]
     assert_equal 12, @player.score
   end
 
   def test_player_can_hit_on_thier_cards
-    @player.hand = ["2 of Hearts", "K of Spades"]
-    assert_equal String, @player.hit
+    @player.hit
+    assert_equal 3, @player.hand.count
   end
 
 end

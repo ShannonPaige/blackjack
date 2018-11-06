@@ -17,6 +17,7 @@ class GameTest < Minitest::Test
 
   def test_game_can_deal_cards
     @game.deal
+
     assert_equal 2, @player.hand.count
   end
 
